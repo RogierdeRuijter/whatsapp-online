@@ -23,7 +23,7 @@ export default function Home() {
           Currenly, we cant be anonyoums on Whatsapp. The other person will
           always see if we are online or not.
         </p>
-        <Image src={maxres} />
+        <Image src={maxres} placeholder="blur" />
         <p>Sign this petition to transform Whatsapp.</p>
         <div>
           <button>Sign petition</button> <span>Total signatures: 0</span>
