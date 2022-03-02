@@ -31,7 +31,7 @@ export default function Home() {
         <div>
           <button>Sign petition</button> <span>Total signatures: 0</span>
         </div>
-        <aside style={{ position: "fixed", bottom: 0, paddingBottom: "1em" }}>
+        <aside style={{ paddingBottom: "1em", paddingTop: "1em" }}>
           When this petiton reaches 100.000 signatures it will be summited to
           Whatsapp.
         </aside>
