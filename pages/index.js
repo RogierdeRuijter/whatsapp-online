@@ -7,9 +7,6 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  width: 700px;
-  max-width: 100%;
-  margin: auto;
   p > {
     line-height: 1.4;
   }
@@ -18,7 +15,7 @@ const Container = styled.div`
 export default function Home() {
   return (
     <Wrapper>
-      <Container>
+      <Container style={{ width: "700px", maxWidth: "100%", margin: "auto" }}>
         <header>
           <h1>Lets take back our privacy</h1>
         </header>
