@@ -1,9 +1,12 @@
 import styled from "styled-components";
 import maxres from "../public/maxresdefault.jpg";
 import Image from "next/image";
+import FingerprintJS from "@fingerprintjs/fingerprintjs";
 
 const Wrapper = styled.div`
   background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
 `;
 
 const Container = styled.div`
@@ -15,7 +18,7 @@ const Container = styled.div`
 export default function Home() {
   return (
     <Wrapper>
-      <Container style={{ width: "700px", maxWidth: "100%", margin: "auto" }}>
+      <Container style={{ width: "700px", maxWidth: "100%" }}>
         <header>
           <h1>Lets take back our privacy</h1>
         </header>
@@ -26,13 +29,39 @@ export default function Home() {
         <Image src={maxres} placeholder="blur" />
         <p>Sign this petition to transform Whatsapp.</p>
         <div>
-          <button>Sign petition</button> <span>Total signatures: 0</span>
+          <button
+            onClick={async () => {
+              const fpPromise = FingerprintJS.load();
+              const fp = await fpPromise;
+              const fingerprint = await fp.get();
+
+              await fetch("http://localhost:3000/api/sign/", {
+                method: "post",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                credentials: "include", // This is used to set the cookie returned by the API
+                body: JSON.stringify({ visitorId: fingerprint.visitorId }),
+              });
+            }}
+          >
+            Sign petition
+          </button>
+          <span>Total signatures: 0</span>
         </div>
-        <aside style={{ paddingBottom: "1em", paddingTop: "1em" }}>
-          When this petiton reaches 100.000 signatures it will be summited to
-          Whatsapp.
-        </aside>
       </Container>
+      <aside style={{ padding: "1em", marginRight: "2%" }}>
+        <h4>Milestones</h4>
+        <ul>
+          <li>100</li>
+          <li>1.000</li>
+          <li>5.000</li>
+          <li>5.000</li>
+          <li>10.000</li>
+          <li>50.000</li>
+          <li>100.000</li>
+        </ul>
+      </aside>
     </Wrapper>
   );
 }
