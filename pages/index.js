@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import maxres from "../public/maxresdefault.jpg";
 import Image from "next/image";
-import FingerprintJS from "@fingerprintjs/fingerprintjs";
+import Button from "./Button";
 
 const Wrapper = styled.div`
   background-color: #fff;
-  display: flex;
-  flex-wrap: wrap;
 `;
 
 const Container = styled.div`
@@ -17,7 +15,7 @@ const Container = styled.div`
 
 export default function Home() {
   return (
-    <Wrapper>
+    <Wrapper style={{ display: "flex", flexWrap: "wrap" }}>
       <Container style={{ width: "700px", maxWidth: "100%" }}>
         <header>
           <h1>Lets take back our privacy</h1>
@@ -29,30 +27,7 @@ export default function Home() {
         <Image src={maxres} placeholder="blur" />
         <p>Sign this petition to transform Whatsapp.</p>
         <div>
-          <button
-            onClick={async () => {
-              const fpPromise = FingerprintJS.load();
-              const fp = await fpPromise;
-              const fingerprint = await fp.get();
-
-              // TODO: add domain based on environment
-              let domain = process.env.DOMAIN;
-              if (!domain) {
-                domain = "https://goofy-darwin-b44948.netlify.app";
-              }
-
-              await fetch(`${domain}/api/sign`, {
-                method: "post",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                credentials: "include", // This is used to set the cookie returned by the API
-                body: JSON.stringify({ visitorId: fingerprint.visitorId }),
-              });
-            }}
-          >
-            Sign petition
-          </button>
+          <Button />
           <span>Total signatures: 0</span>
         </div>
       </Container>
