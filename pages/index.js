@@ -38,10 +38,10 @@ export default function Home() {
               // TODO: add domain based on environment
               let domain = process.env.DOMAIN;
               if (!domain) {
-                domain = "https://goofy-darwin-b44948.netlify.app"
+                domain = "https://goofy-darwin-b44948.netlify.app";
               }
 
-              await fetch(`${domain}/api/sign/`, {
+              await fetch(`${domain}/api/sign`, {
                 method: "post",
                 headers: {
                   "Content-Type": "application/json",
