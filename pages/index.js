@@ -35,7 +35,12 @@ export default function Home() {
               const fp = await fpPromise;
               const fingerprint = await fp.get();
 
-              await fetch("http://localhost:3000/api/sign/", {
+              let domain = process.env.DOMAIN;
+              if (!domain) {
+                domain = "http://localhost:3000";
+              }
+
+              await fetch(`${domain}/api/sign/`, {
                 method: "post",
                 headers: {
                   "Content-Type": "application/json",
