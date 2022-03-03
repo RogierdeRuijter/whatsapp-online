@@ -36,7 +36,7 @@ export default function Home() {
               const fingerprint = await fp.get();
 
               // TODO: add domain based on environment
-              let domain = "https://goofy-darwin-b44948.netlify.app/";
+              let domain = "https://goofy-darwin-b44948.netlify.app";
               // if (!domain) {
               //   domain = "http://localhost:3000";
               // }
