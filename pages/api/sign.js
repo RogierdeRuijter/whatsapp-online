@@ -19,26 +19,9 @@ const setSignedCookie = (req, res) => {
 };
 
 // Initialize the cors middleware
-const cors = initMiddleware(
-  // You can read more about the available options here: https://github.com/expressjs/cors#configuration-options
-  Cors({
-    // Only allow requests with GET, POST and OPTIONS
-    methods: ["POST", "OPTIONS"],
-    origin: "https://goofy-darwin-b44948.netlify.app",
-  })
-);
+const cors = initMiddleware(Cors({}));
 
 export default async function handler(req, res) {
-  const f = Cors({
-    // Only allow requests with GET, POST and OPTIONS
-    methods: "POST, OPTIONS",
-    origin: true,
-  });
-
-  f(req, res, (result) => {
-    console.log(result);
-  });
-
   await cors(req, res);
 
   if (req.headers["content-type"] !== "application/json") {
