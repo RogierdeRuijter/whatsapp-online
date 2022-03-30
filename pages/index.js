@@ -1,7 +1,5 @@
 import styled from "styled-components";
-import maxres from "../public/maxresdefault.jpg";
-import Image from "next/image";
-import Button from "./Button";
+import SignButton from "./SignButton";
 
 const Wrapper = styled.div`
   background-color: #fff;
@@ -24,10 +22,9 @@ export default function Home() {
           Currenly, we cant be anonyoums on Whatsapp. The other person will
           always see if we are online or not.
         </p>
-        <Image src={maxres} placeholder="blur" />
         <p>Sign this petition to transform Whatsapp.</p>
         <div>
-          <Button />
+          <SignButton />
           <span>Total signatures: 0</span>
         </div>
       </Container>

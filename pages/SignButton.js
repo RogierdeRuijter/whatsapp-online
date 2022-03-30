@@ -1,17 +1,19 @@
 import styled from "styled-components";
+import FingerprintJS from "@fingerprintjs/fingerprintjs";
+// import "./SignButton.css";
 
+// position: absolute;
+// top: 50%;
+// left: 50%;
+// margin-left: -65px;
+// margin-top: -20px;
 const Container = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-left: -65px;
-  margin-top: -20px;
   width: 130px;
   height: 40px;
   text-align: center;
 `;
 
-const But = styled.button`
+const Button = styled.button`
   outline: none;
   height: 40px;
   text-align: center;
@@ -22,6 +24,7 @@ const But = styled.button`
   color: green;
   letter-spacing: 1px;
   text-shadow: 0;
+  font-weight: bold;
   cursor: pointer;
   transition: all 0.25s ease;
 
@@ -34,50 +37,10 @@ const But = styled.button`
   }
 `;
 
-// font: {
-//   size: 12px;
-//   weight: bold;
-// }
-
-// .onclic {
-//   width: 40px;
-//   border-color: $gray;
-//   border-width: 3px;
-//   font-size: 0;
-//   border-left-color: $green;
-//   animation: rotating 2s 0.25s linear infinite;
-
-//   &:after {
-//     content: "";
-//   }
-//   &:hover {
-//     color: $green;
-//     background: white;
-//   }
-// }
-// .validate {
-//   font-size: 13px;
-//   color: white;
-//   background: $green;
-//   &:after {
-//     font-family: "FontAwesome";
-//     content: "\f00c";
-//   }
-// }
-
-// @keyframes rotating {
-//   from {
-//     transform: rotate(0deg);
-//   }
-//   to {
-//     transform: rotate(360deg);
-//   }
-// }
-
-export default function Button() {
+export default function SignButton() {
   return (
-    <div class="container">
-      <But
+    <Container>
+      <Button
         id="button"
         onClick={async () => {
           const fpPromise = FingerprintJS.load();
@@ -101,7 +64,7 @@ export default function Button() {
         }}
       >
         Sign petition
-      </But>
-    </div>
+      </Button>
+    </Container>
   );
 }

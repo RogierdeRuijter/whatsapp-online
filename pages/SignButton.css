@@ -1,0 +1,36 @@
+.onclic {
+  width: 40px;
+  border-color: gray;
+  border-width: 3px;
+  font-size: 0;
+  border-left-color: green;
+  animation: rotating 2s 0.25s linear infinite;
+}
+
+.onclic:after {
+  content: "";
+}
+
+.onclic:hover {
+  color: green;
+  background: white;
+}
+.validate {
+  font-size: 13px;
+  color: white;
+  background: green;
+}
+
+.validate:after {
+  font-family: "FontAwesome";
+  content: "\f00c";
+}
+
+@keyframes rotating {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

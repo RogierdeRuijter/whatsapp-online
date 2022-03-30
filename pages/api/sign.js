@@ -24,19 +24,22 @@ const cors = initMiddleware(Cors({}));
 export default async function handler(req, res) {
   await cors(req, res);
 
+  // TODO: validate that the host is coming from the domain not some random adress
+  // console.log(req.headers.hostName);
+
   if (req.headers["content-type"] !== "application/json") {
     return res.status(422).send("Invalid body");
   }
   const body = await req.body;
 
   if (!Object.keys(body).length) {
-    return res.status(400).send("Request body can not be empty!");
+    return res.status(400).send();
   }
 
   const { visitorId } = body;
 
   if (!visitorId) {
-    return res.status(400).send("VisitorId should be defined");
+    return res.status(400).send();
   }
 
   const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.fbnrc.mongodb.net/tester?retryWrites=true&w=majority`;
